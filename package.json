@@ -1,0 +1,25 @@
+{
+  "name": "employee-tracker",
+  "version": "1.0.0",
+  "description": "employee tracker",
+  "main": "index.js",
+  "dependencies": {
+    "console-table-printer": "^2.10.0",
+    "inquirer": "^8.2.0",
+    "mysql2": "^2.3.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RHJeffries/employee_tracker.git"
+  },
+  "author": "Ryan Jeffries",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RHJeffries/employee_tracker/issues"
+  },
+  "homepage": "https://github.com/RHJeffries/employee_tracker#readme"
+}
