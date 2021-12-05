@@ -6,20 +6,14 @@ const connection = require('./config/connection');
 // print table package
 const { printTable } = require('console-table-printer');
 
-// access classes
-const Department = require(__dirname + '/classes/Department.js');
-const Role = require(__dirname + '/classes/Role.js');
-const Employee = require(__dirname + '/classes/Employee.js');
-
-// select port to listen to
-const PORT = process.env.PORT || 3001;
+const department = require('./lib/department')
 
 
-const userPrompt = () => {
-    inquirer.prompt([
+const start = async () => {
+ await inquirer .prompt([
         {
           type: "list",
-          name: "promptSelection",
+          name: "dbChoices",
           message: `What would you like to do?`,
           choices: [
             "View All Department",
@@ -33,4 +27,31 @@ const userPrompt = () => {
         ],
       },
     ])
-}
+
+    .then((data) => {
+        console.log(data)
+      
+      if (data.initial === 'View all departments') {
+        console.log("View department");
+        departments.viewDepartment();
+        questions();
+    
+      }
+    
+    else if (data.initial === 'Add a department') {
+        const order = async () => {
+        console.log("add department");
+        await departments.addDepartment();
+        await questions();
+        }
+        order();
+      }
+    })
+      .catch((error) => {
+        console.log(error)
+        })
+    
+    };
+       
+
+
