@@ -16,8 +16,8 @@ const start = async () => {
           name: "dbChoices",
           message: `What would you like to do?`,
           choices: [
-            "View All Department",
-            "View All Role",
+            "View All Departments",
+            "View All Roles",
             "View All Employees",
             "Add a Department",
             "Add a Role",
@@ -54,4 +54,4 @@ const start = async () => {
     };
        
 
-
+module.exports = { start }
