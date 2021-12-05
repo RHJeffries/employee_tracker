@@ -1,8 +1,6 @@
 CREATE DATABASE employer_db;
 USE employer_db;
 
-USE employer_db;
-
 CREATE TABLE department (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   department_name VARCHAR(100) NOT NULL

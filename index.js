@@ -1,15 +1,17 @@
 const mysql = require('mysql2');
 const inquirer = require('inquirer');
 
-const connection = require('./config/connection');
+//const connection = require('./config/connection');
 
 // print table package
 const { printTable } = require('console-table-printer');
 
-const department = require('./lib/department')
+const department = require('./lib/department');
+const role = require('./lib/role');
+const employee = require('./lib/employee');
 
 
-const start = async () => {
+const questions = async () => {
  await inquirer .prompt([
         {
           type: "list",
@@ -23,7 +25,7 @@ const start = async () => {
             "Add a Role",
             "Add an Employee",
             "Update an Employee Role",
-            "EXIT",
+            "Exit",
         ],
       },
     ])
@@ -33,7 +35,7 @@ const start = async () => {
       
       if (data.initial === 'View all departments') {
         console.log("View department");
-        departments.viewDepartment();
+        department.viewDepartment();
         questions();
     
       }
@@ -41,11 +43,47 @@ const start = async () => {
     else if (data.initial === 'Add a department') {
         const order = async () => {
         console.log("add department");
-        await departments.addDepartment();
+        await department.addDepartment();
         await questions();
         }
         order();
       }
+
+      else if (data.initial === 'View all employees') {
+        console.log("view employees");
+        employee.viewEmployees();
+        questions();
+      }
+
+      else if (data.initial === 'Add an employee') {
+        const order = async () => {
+          console.log("add employee");
+          await employee.addEmployee();
+          await questions();
+          }
+          order();
+      } 
+
+      else if (data.initial === 'View all roles') {
+        console.log("View roles");
+        role.viewRole();
+        questions();
+      }
+
+      else if (data.initial === 'Add a role') {
+        const order = async () => {
+          console.log("add role");
+          await role.addRole();
+          await questions();
+          }
+          order();
+      }
+
+      else if (data.initial === 'Exit') {
+        return
+        }
+
+
     })
       .catch((error) => {
         console.log(error)
@@ -54,4 +92,4 @@ const start = async () => {
     };
        
 
-module.exports = { start }
+module.exports = { questions }
